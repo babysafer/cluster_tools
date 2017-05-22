@@ -1,0 +1,8 @@
+10.114.166.143	xqcdhmgr1 
+10.114.166.144  xqcdhmgr2 
+10.114.166.145	xqcdhmgr3 
+10.113.166.146  xqcdhdata1
+10.113.166.147  xqcdhdata2
+10.113.166.148  xqcdhdata3
+10.113.166.149  xqcdhdata4
+10.113.166.150  xqcdhdata5
