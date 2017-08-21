@@ -5,7 +5,7 @@
 #for get the path of ip.txt
 
 ######config area######
-ROOT_PASSWD=Dnt_2015    #root passwd
+ROOT_PASSWD=    #root passwd
 ######config end#######
 current_dir="`dirname $0`"
 cd ${current_dir} && current_dir=`pwd` && cd - &>/dev/null

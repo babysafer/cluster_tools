@@ -3,7 +3,7 @@
 # write by babysafer  in fq 20170504
 
 ##########config eare##############
-ROOT_PASSWD=Dnt_2015    #root passwd
+ROOT_PASSWD=    #root passwd
 ########## end ####################
 
 #for get the path of ip.txt
