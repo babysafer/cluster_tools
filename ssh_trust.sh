@@ -48,13 +48,13 @@ chmod 700 ~/.ssh
 chmod 600 ~/.ssh/authorized_keys
 
 # scp the dirctory of .ssh to others host in ip.txt
-clusterHostname=( `awk '{print $2}' ${target}` )
-for hostname in ${clusterHostname[*]}
+current_IP=( `awk '{print $1}' ${target}` )
+for ip in ${current_IP[*]}
 do
-        echo -e "\033[31m ***********${USER_NAME}@@@$hostname**********  \033[0m"
+        echo -e "\033[31m ***********${USER_NAME}@@@$ip**********  \033[0m"
 expect <<EOF
         set timeout 30
-        spawn scp  -o StrictHostKeyChecking=no  -r  $1/.ssh/  ${USER_NAME}@$hostname:~
+        spawn scp  -o StrictHostKeyChecking=no  -r  $1/.ssh/  ${USER_NAME}@$ip:~
         expect {
                 "yes/no" {send "yes\r", exp_continue}
                 "*assw*" {send "${USER_PASSWD}\r"}
