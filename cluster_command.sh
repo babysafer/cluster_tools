@@ -15,7 +15,7 @@ then
 		for hostname in ${clusterHostname[*]}
 				do
 					 echo -e "\033[31m *******$USER@$hostname**********  \033[0m"
-					 ssh  $USER@$hostname  "source ~/.bash_profile;$1"
+					 ssh  -o StrictHostKeyChecking=no $USER@$hostname  "source ~/.bash_profile;$1"
 				done
 else
 		echo -e  "\033[31m please input filename and purposepath  \033[0m"
