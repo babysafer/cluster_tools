@@ -1,9 +1,11 @@
 #!/bin/bash
-# for  scp file to the ip.txt
-# write by babysafer  in fq 20170504
+# for  scp file to the ip.txt and tar
+# write by babysafer  in fq 20171123
 
 ##########config eare##############
-ROOT_PASSWD=    #root passwd
+USER=obdsapp
+USER_PASSWD=
+TARGET_PATH=/tmp/hb_client.tar.gz
 ########## end ####################
 
 #for get the path of ip.txt
@@ -19,13 +21,19 @@ then
 	for hostname in ${clusterHostname[*]}
 		do
 		    echo -e "\033[31m ***********$USER@@@$hostname**********  \033[0m"
-			expect <<EOF
-	        spawn	scp -r  $1 $USER@$hostname:$2
+expect <<EOF
+	        spawn	scp -o StrictHostKeyChecking=no -r  $1 $USER@$hostname:$2
 			expect {
 				"yes/no" {send "yes\r", exp_continue}
-				"*assw*" {send "${ROOT_PASSWD}\r"}
+				"*assw*" {send "${USER_PASSWD}\r"}
 					}
-			expect eof
+	expect eof
+	        spawn	ssh $USER@$hostname "tar -zxvf $TARGET_PATH -C ~"
+			expect {
+				"yes/no" {send "yes\r", exp_continue}
+				"*assw*" {send "${USER_PASSWD}\r"}
+					}
+	expect eof
 EOF
 		done
 else
