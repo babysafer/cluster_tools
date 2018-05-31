@@ -20,7 +20,7 @@ then
 		do
 		    echo -e "\033[31m ***********$USER@@@$hostname**********  \033[0m"
 			expect <<EOF
-	        spawn	scp -r  $1 $USER@$hostname:$2
+	        spawn	scp -r -o StrictHostKeyChecking=no  $1 $USER@$hostname:$2
 			expect {
 				"yes/no" {send "yes\r", exp_continue}
 				"*assw*" {send "${ROOT_PASSWD}\r"}
